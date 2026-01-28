@@ -10,13 +10,15 @@ services:
       - "5000:5000"
 
   frontend:
-  build:
-    context: ./client
-    args:
-      VITE_API_URI: http://13.233.190.171:500/api
-  container_name: frontend
-  restart: always
-  ports:
-    - "5173:5173"
-  depends_on:
-    - backend
+    build:
+      context: ./client
+      args:
+        VITE_API_URI: http://13.233.190.171:5000/api
+        
+    container_name: frontend
+    restart: always
+    ports:
+      - "5173:5173"
+
+    depends_on:
+      - backend
